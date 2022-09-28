@@ -44,14 +44,14 @@ const createMovie = (req, res, next) => {
     });
 };
 
-// const getCards = (req, res, next) => (
-//   Card.find({})
-//     .populate('owner')
-//     .then((card) => {
-//       res.status(200).send(card);
-//     })
-//     .catch(next)
-// );
+const getMovies = (req, res, next) => (
+  Movie.find({})
+    .populate('owner')
+    .then((movie) => {
+      res.status(200).send(movie);
+    })
+    .catch(next)
+);
 
 const removeMovie = (req, res, next) => (
   Movie.findById(req.params.movieId)
@@ -72,4 +72,4 @@ const removeMovie = (req, res, next) => (
     })
 );
 
-module.exports = { createMovie, getCards, removeMovie };
+module.exports = { createMovie, getMovies, removeMovie };
