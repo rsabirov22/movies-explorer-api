@@ -73,7 +73,10 @@ const editUser = (req, res, next) => {
       throw new NotFoundError('Пользователь не найден');
     })
     .then((user) => {
-      res.status(200).send(user);
+      res.status(200).send({
+        email: user.email,
+        name: user.name,
+      });
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
