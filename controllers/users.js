@@ -79,7 +79,9 @@ const editUser = (req, res, next) => {
       });
     })
     .catch((err) => {
-      if (err.name === 'ValidationError') {
+      if (err.code === 11000) {
+        next(new UserExistsError('Такой пользователь уже существует'));
+      } else if (err.name === 'ValidationError') {
         next(new ValidationError('Переданы невалидные данные'));
       } else {
         next(err);
