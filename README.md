@@ -15,5 +15,4 @@
 
 ## IP-адрес сервера
 
-- 62.84.126.182
-
+- https://movies.exp.rsabirov.nomorepartiesxyz.ru/api
