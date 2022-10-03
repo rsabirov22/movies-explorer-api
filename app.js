@@ -15,7 +15,9 @@ app.use(cookieParser());
 const { PORT = 3001 } = process.env;
 
 // подключаемся к серверу mongo
-mongoose.connect('mongodb://localhost:27017/bitfilmsdb');
+mongoose.connect(process.env.NODE_ENV === 'production' ? process.env.DB_URL : 'mongodb://localhost:27017/moviesdb', {
+  useNewUrlParser: true,
+});
 
 app.use(requestLogger); // подключаем логгер запросов
 app.use(router);
