@@ -18,6 +18,12 @@ router.post('/api/signup', celebrate({
     password: Joi.string().required(),
   }),
 }), createUser);
+router.get('/api/signout', (req, res) => {
+  res.clearCookie('jwt', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+  }).send({});
+});
 router.use(auth);
 router.use('/api/users', usersRouter);
 router.use('/api/movies', moviesRouter);
